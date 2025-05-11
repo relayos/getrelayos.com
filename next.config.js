@@ -6,8 +6,21 @@ const nextConfig = {
     domains: ['getrelayos.com', 'wordpress', 'localhost'],
     formats: ['image/avif', 'image/webp'],
   },
-  experimental: {
-    outputStandalone: true,
+  output: 'standalone',
+  // Exclude legacy code from the build
+  webpack: (config, { isServer }) => {
+    // Exclude legacy-vite-version directory from the build
+    if (config.watchOptions) {
+      config.watchOptions.ignored = config.watchOptions.ignored || [];
+      if (Array.isArray(config.watchOptions.ignored)) {
+        config.watchOptions.ignored.push('**/legacy-vite-version/**');
+      }
+    } else {
+      config.watchOptions = {
+        ignored: ['**/legacy-vite-version/**'],
+      };
+    }
+    return config;
   },
   env: {
     WORDPRESS_API_URL: process.env.WORDPRESS_API_URL || 'http://localhost:8080/wp-json/wp/v2',

@@ -8,6 +8,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      borderColor: {
+        border: 'hsl(var(--border))',
+      },
       colors: {
         primary: {
           50: '#f0f7ff',
