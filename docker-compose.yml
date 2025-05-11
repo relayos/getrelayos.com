@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Next.js frontend
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.nextjs
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - WORDPRESS_API_URL=http://wordpress/wp-json/wp/v2
+      - WORDPRESS_GRAPHQL_URL=http://wordpress/graphql
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - wordpress
+    networks:
+      - relayos_network
+
+  # WordPress headless CMS
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress_password
+      - WORDPRESS_TABLE_PREFIX=wp_
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wordpress/plugins:/var/www/html/wp-content/plugins
+      - ./wordpress/themes/relayos:/var/www/html/wp-content/themes/relayos
+    depends_on:
+      - db
+    networks:
+      - relayos_network
+
+  # MySQL database for WordPress
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress_password
+      - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - relayos_network
+
+  # Nginx for caching and routing
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - nginx_cache:/var/cache/nginx
+    depends_on:
+      - nextjs
+      - wordpress
+    networks:
+      - relayos_network
+
+volumes:
+  wordpress_data:
+  db_data:
+  nginx_cache:
+
+networks:
+  relayos_network:
+    driver: bridge
