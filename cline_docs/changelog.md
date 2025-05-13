@@ -5,8 +5,16 @@
 ## [Unreleased]
 
 ### Added
+- Created PRD template for all RelayOS products
+- Created GTM messaging framework template for all RelayOS products
+- Completed detailed PRD for RelayOS Embed™
+- Completed GTM messaging framework for RelayOS Embed™
+- Created directory structure for product documentation
 
 ### Changed
+- Updated project documentation to focus on PRD and GTM strategy for RelayOS products
+- Added PRD and GTM tasks to progress tracking
+- Updated progress tracking to mark completed PRD and GTM for RelayOS Embed™
 
 ### Fixed
 
