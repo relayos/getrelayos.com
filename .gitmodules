@@ -1,0 +1,3 @@
+[submodule ".crct"]
+	path = .crct
+	url = git@github.com:allenday/Cline-Recursive-Chain-of-Thought-System-CRCT-.git
