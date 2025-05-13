@@ -29,7 +29,7 @@ This file tracks the high-level progress of the RelayOS website project. It serv
 - [x] Create focused customer support GTM matrix
 - [x] Create focused customer success GTM matrix
 - [x] Develop industry-specific content assets for priority verticals
-- [ ] Create sales enablement materials for vertical GTM approach
+- [x] Create simplified sales enablement approach
 - [ ] Design and execute targeted marketing campaigns for priority verticals
 
 ## Website Strategy
