@@ -12,14 +12,14 @@
 ## Current Work Focus:
 
 - Strategy phase in progress
-- Completed PRD and GTM messaging for RelayOS Embed™, Connect™, and Integrate™
+- Completed PRD and GTM messaging for RelayOS Embed™, Connect™, Integrate™, and Persist™
 - Developing comprehensive product documentation for all RelayOS products
 
 ## Next Steps:
 
-1. Create PRD for RelayOS Persist™ (first B2C product)
-2. Develop GTM messaging for RelayOS Persist™
-3. Continue with remaining products in priority order (Communities™, AI features)
+1. Create PRD for RelayOS Communities™ (second B2C product)
+2. Develop GTM messaging for RelayOS Communities™
+3. Continue with remaining products in priority order (AI features)
 4. Review dependency trackers and verify relationships
 
 ## Active Decisions and Considerations:
