@@ -32,6 +32,13 @@ This file tracks the high-level progress of the RelayOS website project. It serv
 - [ ] Create sales enablement materials for vertical GTM approach
 - [ ] Design and execute targeted marketing campaigns for priority verticals
 
+## Website Strategy
+- [x] Define website goals and KPIs with lead generation focus
+- [x] Document product-specific approaches (B2B lead gen, Persist™ eCommerce, Embed™ free tier)
+- [ ] Design conversion-focused page templates with appropriate CTAs
+- [ ] Create industry-specific landing page templates
+- [ ] Develop differentiated purchase/contact flows for B2B vs. B2C products
+
 ## Privacy Framework Implementation
 - [x] Create privacy approach implementation plan
 - [x] Develop Feature-Data Requirements Matrix for Nexus™

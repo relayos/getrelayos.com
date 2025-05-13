@@ -34,7 +34,7 @@ integration_doc: "cline_docs/prompts/gitops_integration.md"
 memory_dir: "cline_docs"
 
 [LAST_ACTION_STATE]
-last_action: "Implemented vertical GTM matrix for key industries"
+last_action: "Defined website goals and KPIs with lead generation focus"
 current_phase: "Strategy"
 next_action: "Develop industry-specific content assets for priority verticals"
 next_phase: "Strategy"
@@ -69,3 +69,8 @@ next_phase: "Strategy"
 - Software engineer productivity and team collaboration verticals show strong alignment with RelayOS Connect™, Integrate™, and Nexus™ products.
 - Sales, customer support, and customer success verticals benefit from different combinations of RelayOS products, with each vertical having unique use cases and pain points.
 - A sparse approach to vertical GTM matrices for most industries, focusing only on the key sweet spots, helps maintain clarity and focus in go-to-market efforts.
+- The RelayOS website serves primarily as a lead generation tool for the sales team, with "Contact Sales" as the main CTA for most products.
+- RelayOS Persist™ requires a different approach with direct eCommerce purchase flow, either standalone or bundled with Communities™.
+- RelayOS Embed™ has a free tier that connects to public networks with ad support, requiring a dual approach on the website.
+- Different products require different CTAs and conversion paths on the website to align with their business models.
+- Industry-specific landing pages based on the vertical GTM matrices can drive more qualified leads by addressing specific pain points.

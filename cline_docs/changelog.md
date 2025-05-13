@@ -37,6 +37,7 @@
 - Created focused customer support GTM matrix
 - Created focused customer success GTM matrix
 - Created industry-specific GTM matrix index
+- Created website goals and KPIs document with lead generation focus
 
 ### Changed
 - Updated project documentation to focus on PRD and GTM strategy for RelayOS products
@@ -57,6 +58,8 @@
 - Updated progress tracking to include vertical GTM strategy section
 - Updated activeContext.md to reflect completion of vertical GTM matrices and next steps
 - Updated .clinerules to reflect completion of vertical GTM matrices implementation
+- Updated progress tracking to include website strategy section
+- Updated activeContext.md to include website goals and KPIs focus
 
 ### Fixed
 

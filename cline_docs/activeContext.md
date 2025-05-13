@@ -14,13 +14,15 @@
 - Strategy phase in progress
 - Completed implementation of vertical GTM matrix for key industries
 - Finalizing comprehensive product documentation suite with balanced privacy approach
+- Defined website goals and KPIs with focus on lead generation
 
 ## Next Steps:
 
 1. Review dependency trackers and verify relationships
 2. Develop industry-specific content assets for priority verticals (entertainment and software engineer productivity)
 3. Update PRDs and GTM messaging to incorporate both the balanced privacy approach and industry-specific positioning
-4. Prepare for transition to Execution phase for website implementation
+4. Design conversion-focused website templates with appropriate CTAs for different products
+5. Prepare for transition to Execution phase for website implementation
 
 ## Active Decisions and Considerations:
 
@@ -28,3 +30,5 @@
 - How to implement the tiered product approach for Communities™ in the website design
 - How to showcase the configurable privacy controls as a key differentiator across different verticals
 - How to prioritize resources between vertical-specific marketing and privacy-focused messaging
+- How to balance lead generation focus with eCommerce approach for Persist™ and free tier for Embed™
+- What level of detail to include in industry-specific landing pages to drive qualified leads
