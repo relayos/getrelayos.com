@@ -34,9 +34,9 @@ integration_doc: "cline_docs/prompts/gitops_integration.md"
 memory_dir: "cline_docs"
 
 [LAST_ACTION_STATE]
-last_action: "Developed industry-specific evergreen SEO content plan for priority verticals"
+last_action: "Rolled back detailed sales enablement materials planning"
 current_phase: "Strategy"
-next_action: "Create sales enablement materials for vertical GTM approach"
+next_action: "Create simplified sales enablement approach"
 next_phase: "Strategy"
 
 [CODE_ROOT_DIRECTORIES]

@@ -18,12 +18,11 @@
 
 ## Next Steps:
 
-1. Review dependency trackers and verify relationships
-2. Create sales enablement materials for vertical GTM approach
-3. Design conversion-focused page templates with appropriate CTAs for different products
-4. Create industry-specific landing page templates
-5. Update PRDs and GTM messaging to incorporate both the balanced privacy approach and industry-specific positioning
-6. Prepare for transition to Execution phase for website implementation
+1. Design conversion-focused page templates with appropriate CTAs for different products
+2. Create industry-specific landing page templates
+3. Update PRDs and GTM messaging to incorporate both the balanced privacy approach and industry-specific positioning
+4. Create simplified sales enablement materials for vertical GTM approach
+5. Prepare for transition to Execution phase for website implementation
 
 ## Active Decisions and Considerations:
 
@@ -33,3 +32,4 @@
 - How to prioritize resources between vertical-specific marketing and privacy-focused messaging
 - How to balance lead generation focus with eCommerce approach for Persist™ and free tier for Embed™
 - What level of detail to include in industry-specific landing pages to drive qualified leads
+- How to create simplified but effective sales enablement materials that leverage the vertical GTM matrices
