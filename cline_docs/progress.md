@@ -11,8 +11,8 @@ This file tracks the high-level progress of the RelayOS website project. It serv
 - [x] Develop GTM messaging for RelayOS Integrate™
 - [x] Create PRD for RelayOS Persist™ (B2C)
 - [x] Develop GTM messaging for RelayOS Persist™
-- [ ] Create PRD for RelayOS Communities™ (B2C)
-- [ ] Develop GTM messaging for RelayOS Communities™
+- [x] Create PRD for RelayOS Communities™ (B2C)
+- [x] Develop GTM messaging for RelayOS Communities™
 - [ ] Create PRD for AI-Enhanced Interaction features
 - [ ] Develop GTM messaging for AI capabilities
 
