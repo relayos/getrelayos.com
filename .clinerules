@@ -34,9 +34,9 @@ integration_doc: "cline_docs/prompts/gitops_integration.md"
 memory_dir: "cline_docs"
 
 [LAST_ACTION_STATE]
-last_action: "Completed PRD and GTM for RelayOS Embed™"
+last_action: "Completed PRD and GTM for RelayOS Connect™"
 current_phase: "Strategy"
-next_action: "Create PRD and GTM for RelayOS Connect™"
+next_action: "Create PRD and GTM for RelayOS Integrate™"
 next_phase: "Strategy"
 
 [CODE_ROOT_DIRECTORIES]
@@ -54,3 +54,4 @@ next_phase: "Strategy"
 - When initializing the BRCT system as a submodule, create project-specific files in the parent project's cline_docs directory, not in the .crct/cline_docs directory.
 - The .crct directory is read-only and contains the BRCT system files, while project-specific files are stored in the cline_docs directory.
 - For the Strategy phase, focusing on PRD and GTM messaging for each product helps establish clear requirements and market positioning before implementation.
+- When creating product documentation for related products, maintaining consistent terminology and messaging while differentiating value propositions is essential for a cohesive product family.

@@ -5,8 +5,8 @@ This file tracks the high-level progress of the RelayOS website project. It serv
 ## Product Requirements & Go-to-Market Strategy
 - [x] Create PRD for RelayOS Embed™ (B2B)
 - [x] Develop GTM messaging for RelayOS Embed™
-- [ ] Create PRD for RelayOS Connect™ (B2B)
-- [ ] Develop GTM messaging for RelayOS Connect™
+- [x] Create PRD for RelayOS Connect™ (B2B)
+- [x] Develop GTM messaging for RelayOS Connect™
 - [ ] Create PRD for RelayOS Integrate™ (B2B)
 - [ ] Develop GTM messaging for RelayOS Integrate™
 - [ ] Create PRD for RelayOS Persist™ (B2C)
