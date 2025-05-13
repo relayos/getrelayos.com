@@ -86,8 +86,9 @@ RelayOS Embed™ utilizes a microservices architecture with a lightweight JavaSc
 3. **Message Service**: Handles real-time message delivery, persistence, and synchronization.
 4. **Analytics Service**: Collects and processes usage data and visitor insights.
 5. **Admin Dashboard**: Web-based interface for configuration, customization, and analytics.
+6. **Privacy Configuration Framework**: Comprehensive system for controlling data usage across all features.
 
-The architecture prioritizes minimal performance impact on the host application while maintaining robust functionality and security.
+The architecture prioritizes minimal performance impact on the host application while maintaining robust functionality and security with configurable privacy controls.
 
 ### Integrations
 | System | Integration Type | Purpose |
@@ -98,10 +99,47 @@ The architecture prioritizes minimal performance impact on the host application 
 | Analytics Platforms | JavaScript API | Share data with Google Analytics, Mixpanel, etc. for unified reporting |
 | Ticketing Systems | API/Webhook | Create and update support tickets from chat conversations |
 
+### Privacy Configuration Framework
+RelayOS Embed™ includes a comprehensive Privacy Configuration Framework that enables businesses to precisely control how visitor data is used across all features, ensuring a balance between advanced functionality and privacy protection:
+
+1. **Global Privacy Levels**: Three pre-configured privacy profiles that serve as starting points:
+   - **Maximum Privacy**: Prioritizes visitor privacy above all else, limiting functionality to features that can operate with minimal data access. Ideal for sensitive industries or privacy-conscious brands.
+   - **Balanced Privacy**: Carefully balances privacy protection with enhanced functionality through selective feature enablement and privacy safeguards. Suitable for most business websites.
+   - **Enhanced Functionality**: Maximizes available features while maintaining reasonable privacy protections. Appropriate for businesses prioritizing visitor insights and engagement.
+
+2. **Feature-Specific Settings**: Granular control over individual features:
+   - **Visitor Tracking**: Configure what visitor data is collected and how it's used
+   - **Chat History**: Control retention and usage of conversation transcripts
+   - **Analytics Collection**: Set privacy levels for visitor analytics
+   - **Integration Privacy**: Configure data sharing with connected systems
+   - **Chatbot Learning**: Manage how conversation data is used for bot improvement
+
+3. **Data Category Controls**: Specific controls for different categories of data:
+   - **Visitor Data**: Identity information, contact details, browsing behavior
+   - **Conversation Data**: Message content, attachments, sentiment
+   - **Technical Data**: Device information, session details, performance metrics
+   - **Integration Data**: Information shared with third-party systems
+
+4. **Processing Location Options**: Multiple options for where data processing occurs:
+   - **Client-Side Processing**: Data processed in the visitor's browser
+   - **Edge Processing**: Processing on nearby edge servers
+   - **Cloud Processing**: Processing in RelayOS's secure cloud environment
+   - **Hybrid Processing**: Combination based on data sensitivity
+
+5. **Retention Policies**: Configurable retention for different data types:
+   - **Session-Only**: Data retained only during the active session
+   - **Short-Term Retention**: 1-30 days
+   - **Medium-Term Retention**: 1-6 months
+   - **Long-Term Retention**: 6+ months
+   - **Custom Retention**: Business-defined policies
+
+The framework provides administrators with intuitive interfaces for managing privacy settings, with clear visibility into the privacy implications of different configurations and appropriate controls for different business needs.
+
 ### Performance Requirements
 - **Scalability:** Support up to 100,000 concurrent users per account with less than 100ms message delivery latency. Ability to scale horizontally to accommodate traffic spikes.
 - **Reliability:** 99.99% uptime guarantee with redundant infrastructure and automatic failover mechanisms. Offline message queuing to handle temporary connection issues.
 - **Security:** End-to-end encryption for all messages, GDPR and CCPA compliance, regular security audits, and SOC 2 Type II certification. Data retention policies configurable by administrators.
+- **Privacy Levels:** Configurable privacy settings that enable different degrees of functionality based on business preferences, with clear indications of privacy impact for each feature.
 
 ## User Experience
 ### User Flows
@@ -192,8 +230,11 @@ The product supports three primary user flows:
 | Performance impact on host website | High | Medium | Optimize JavaScript bundle size, lazy loading, performance testing on various website types |
 | Security vulnerabilities | High | Low | Regular penetration testing, code audits, bug bounty program, end-to-end encryption |
 | Integration challenges with legacy systems | Medium | High | Comprehensive documentation, integration specialists, pre-built connectors for common systems |
-| Market saturation/competition | Medium | Medium | Focus on differentiators (customization, ease of use), competitive pricing, targeted marketing |
+| Market saturation/competition | Medium | Medium | Focus on differentiators (customization, ease of use, privacy controls), competitive pricing, targeted marketing |
 | Browser compatibility issues | Medium | Medium | Cross-browser testing, graceful degradation, feature detection |
+| Balancing privacy with functionality | High | Medium | Privacy Configuration Framework with transparent controls, configurable privacy levels, feature-specific settings, and clear explanations of privacy trade-offs |
+| Regulatory compliance across jurisdictions | Medium | Medium | Flexible privacy settings, configurable data handling, legal guidance, compliance-focused privacy templates |
+| User confusion about privacy options | Medium | Low | Visual privacy controls, guided setup, privacy recommendations, clear explanations of trade-offs |
 
 ## Appendix
 ### Glossary
