@@ -40,6 +40,9 @@
 - Created website goals and KPIs document with lead generation focus
 - Created industry-specific evergreen SEO content plan for priority verticals (entertainment and software engineer productivity)
 - Created simplified sales enablement approach document focused on website lead generation
+- Created conversion-focused page templates document with appropriate CTAs for different products
+- Created industry-specific landing page templates document
+- Created differentiated purchase/contact flows document for B2B vs. B2C products
 
 ### Changed
 - Updated project documentation to focus on PRD and GTM strategy for RelayOS products
