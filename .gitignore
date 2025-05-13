@@ -40,3 +40,7 @@ yarn-error.log*
 
 # Nginx cache
 /nginx_cache
+
+.venv
+debug.txt
+suggestions.log
