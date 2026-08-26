@@ -2,6 +2,7 @@
 set -eu
 
 test -s README.md
+test -s .woodpecker.yml
 
 grep -F '## BLUF' README.md
 grep -F '## Reader Paths' README.md
@@ -33,6 +34,8 @@ grep -F 'npm run build' README.md
 grep -F 'npm test' README.md
 grep -F 'deployment registry' README.md
 grep -F 'GitOps path' README.md
+grep -F 'verify-docs-contract' .woodpecker.yml
+grep -F 'npm test' .woodpecker.yml
 
 python3 - <<'PY'
 from pathlib import Path
