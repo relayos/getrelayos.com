@@ -12,4 +12,5 @@ steps:
     image: node:20-alpine
     commands:
       - npm ci
+      - apk add --no-cache python3
       - npm test

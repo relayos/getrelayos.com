@@ -44,8 +44,15 @@ expected_clone='clone:
       recursive: false'
 actual_clone="$(awk '/^clone:$/ { capture=1 } /^steps:$/ { capture=0 } capture { print }' .woodpecker.yml | sed '/^$/d')"
 test "$actual_clone" = "$expected_clone"
-grep -F 'verify-docs-contract' .woodpecker.yml
-grep -F 'npm test' .woodpecker.yml
+expected_step='steps:
+  verify-docs-contract:
+    image: node:20-alpine
+    commands:
+      - npm ci
+      - apk add --no-cache python3
+      - npm test'
+actual_step="$(awk '/^steps:$/ { capture=1 } capture { print }' .woodpecker.yml)"
+test "$actual_step" = "$expected_step"
 
 python3 - <<'PY'
 from pathlib import Path
