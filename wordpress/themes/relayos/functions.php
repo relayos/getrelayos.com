@@ -5,6 +5,17 @@
 
 // Register custom post types and taxonomies
 function relayos_register_post_types() {
+    register_post_type('relayos_interest', [
+        'labels' => [
+            'name' => 'RelayOS interests',
+            'singular_name' => 'RelayOS interest',
+        ],
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'supports' => ['title', 'custom-fields'],
+    ]);
+
     // Products custom post type
     register_post_type('product', [
         'labels' => [
@@ -95,7 +106,24 @@ add_action('rest_api_init', 'relayos_register_rest_routes');
 // Contact form handler
 function relayos_handle_contact_form($request) {
     $params = $request->get_params();
-    
+
+    // Browser forms submit on the same origin. A populated honeypot is accepted
+    // without storing data so bots receive no useful signal.
+    if (!empty($params['website'])) {
+        return [
+            'success' => true,
+            'message' => 'Thanks for your interest.',
+        ];
+    }
+
+    $remote_addr = sanitize_text_field($_SERVER['REMOTE_ADDR'] ?? 'unknown');
+    $rate_limit_key = 'relayos_contact_rate_limit_' . hash('sha256', $remote_addr . wp_salt('nonce'));
+    $request_count = (int) get_transient($rate_limit_key);
+    if ($request_count >= 5) {
+        return new WP_Error('rate_limited', 'Please try again later.', ['status' => 429]);
+    }
+    set_transient($rate_limit_key, $request_count + 1, HOUR_IN_SECONDS);
+
     $name = sanitize_text_field($params['name'] ?? '');
     $email = sanitize_email($params['email'] ?? '');
     $phone = sanitize_text_field($params['phone'] ?? '');
@@ -106,25 +134,24 @@ function relayos_handle_contact_form($request) {
         return new WP_Error('missing_fields', 'Please fill in all required fields', ['status' => 400]);
     }
     
-    // Send email notification
+    $interest_source = sanitize_key($params['interest_source'] ?? 'contact');
+    if (!in_array($interest_source, ['contact', 'relayos_release_interest'], true)) {
+        $interest_source = 'contact';
+    }
+
+    // Send email notification.
     $to = get_option('admin_email');
-    $subject = 'New Contact Form Submission from ' . $name;
+    $subject = 'New RelayOS contact from ' . $name;
     $body = "Name: $name\n";
     $body .= "Email: $email\n";
     if (!empty($phone)) $body .= "Phone: $phone\n";
     if (!empty($company)) $body .= "Company: $company\n";
     $body .= "Message: $message\n";
     
-    $sent = wp_mail($to, $subject, $body);
-    
-    if (!$sent) {
-        return new WP_Error('mail_failed', 'Failed to send your message. Please try again.', ['status' => 500]);
-    }
-    
-    // Store in database (optional)
+    // Store requests privately for the operators who own the release path.
     $contact_data = [
         'post_title' => 'Contact from ' . $name,
-        'post_type' => 'contact',
+        'post_type' => 'relayos_interest',
         'post_status' => 'private',
         'meta_input' => [
             'name' => $name,
@@ -132,10 +159,17 @@ function relayos_handle_contact_form($request) {
             'phone' => $phone,
             'company' => $company,
             'message' => $message,
+            'relayos_interest_source' => $interest_source,
         ],
     ];
-    
-    wp_insert_post($contact_data);
+
+    $post_id = wp_insert_post($contact_data, true);
+    if (is_wp_error($post_id)) {
+        return new WP_Error('storage_failed', 'Failed to store your request. Please try again.', ['status' => 500]);
+    }
+
+    // Email is a notification only; the private post is the durable record.
+    wp_mail($to, $subject, $body);
     
     return [
         'success' => true,
@@ -172,14 +206,6 @@ function relayos_handle_signup($request) {
         'user_id' => $user_id,
     ];
 }
-
-// Add CORS support for headless usage
-function relayos_add_cors_headers() {
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type');
-}
-add_action('init', 'relayos_add_cors_headers');
 
 // Optionally disable the front-end for headless setup
 if (!is_admin() && !wp_doing_ajax() && !wp_doing_cron()) {
