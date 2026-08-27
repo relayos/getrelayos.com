@@ -44,7 +44,7 @@ export default function ContactPage() {
         <section className="container mx-auto max-w-2xl px-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">RelayBNC</p>
           <h1 className="mt-4 text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">Register your release interest</h1>
-          <p className="mt-6 text-xl text-slate-600 dark:text-slate-300">RelayBNC keeps an IRC connection available while you are away, with browser access through KiwiIRC. Leave your name and email to hear when the consumer offering has a concrete release update.</p>
+          <p className="mt-6 text-xl text-slate-600 dark:text-slate-300">RelayBNC keeps an IRC connection available while you are away, with browser access through KiwiIRC. Leave your name and email to record your interest in a future consumer release.</p>
           <p className="mt-4 text-slate-600 dark:text-slate-300">This is not a purchase, account, reservation, or promise of eligibility.</p>
 
           <form className="mt-10 space-y-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800" onSubmit={submitInterest}>
