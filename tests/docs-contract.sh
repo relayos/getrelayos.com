@@ -37,6 +37,13 @@ grep -F 'GitOps path' README.md
 grep -F '[RelayOS deploy stack](https://github.com/relayos/relayos-deploy)' README.md
 grep -F '[IRC operator config repo](https://github.com/relayos/relayos-irc-config)' README.md
 grep -F '[infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry)' README.md
+expected_clone='clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: false'
+actual_clone="$(awk '/^clone:$/ { capture=1 } /^steps:$/ { capture=0 } capture { print }' .woodpecker.yml | sed '/^$/d')"
+test "$actual_clone" = "$expected_clone"
 grep -F 'verify-docs-contract' .woodpecker.yml
 grep -F 'npm test' .woodpecker.yml
 

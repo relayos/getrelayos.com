@@ -1,6 +1,12 @@
 when:
   - event: [push, pull_request]
 
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: false
+
 steps:
   verify-docs-contract:
     image: node:20-alpine
