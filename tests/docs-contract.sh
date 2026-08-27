@@ -3,6 +3,7 @@ set -eu
 
 test -s README.md
 test -s .woodpecker.yml
+test -s docs/presales-offering-evidence.md
 
 grep -F '## BLUF' README.md
 grep -F '## Reader Paths' README.md
@@ -14,7 +15,6 @@ grep -F '## Agent Contract' README.md
 
 grep -F '[`pages/`](pages/)' README.md
 grep -F '[`components/`](components/)' README.md
-grep -F '[`lib/data.ts`](lib/data.ts)' README.md
 grep -F '[`wordpress/themes/relayos/`](wordpress/themes/relayos/)' README.md
 grep -F '[`Dockerfile.nextjs`](Dockerfile.nextjs)' README.md
 test -s wordpress/themes/relayos/README.md
@@ -37,6 +37,13 @@ grep -F 'GitOps path' README.md
 grep -F '[RelayOS deploy stack](https://github.com/relayos/relayos-deploy)' README.md
 grep -F '[IRC operator config repo](https://github.com/relayos/relayos-irc-config)' README.md
 grep -F '[infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry)' README.md
+grep -F '[presales offering evidence](docs/presales-offering-evidence.md)' README.md
+grep -F '# RelayOS public offering evidence' docs/presales-offering-evidence.md
+grep -F 'RelayBNC' docs/presales-offering-evidence.md
+grep -F 'persistent IRC connection' docs/presales-offering-evidence.md
+grep -Fi 'offline direct messages' docs/presales-offering-evidence.md
+grep -F 'https://github.com/relayos/relayos-deploy/blob/main/' docs/presales-offering-evidence.md
+grep -F 'KiwiIRC' docs/presales-offering-evidence.md
 expected_clone='clone:
   git:
     image: woodpeckerci/plugin-git
@@ -71,7 +78,10 @@ for target in link_re.findall((root / "README.md").read_text(encoding="utf-8")):
     if not resolved.exists():
         raise SystemExit(f"README.md links missing path: {target}")
 
-for doc in [root / "wordpress/themes/relayos/README.md"]:
+for doc in [
+    root / "wordpress/themes/relayos/README.md",
+    root / "docs/presales-offering-evidence.md",
+]:
     for target in link_re.findall(doc.read_text(encoding="utf-8")):
         if target.startswith(("http://", "https://", "mailto:")):
             continue
@@ -86,3 +96,16 @@ PY
 ! grep -E '(password|token|secret)[[:space:]]*=' README.md
 ! grep -E '(password|token|secret)[[:space:]]*=' wordpress/themes/relayos/README.md
 ! grep -F 'self-deploy.sh' README.md
+! rg -F 'RelayOS Connect' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'RelayOS Embed' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'RelayOS Integrate' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'RelayOS Persist' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'RelayOS Communities' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'Start Free Trial' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F '99.99%' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'What Our Customers Say' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'relayos-api-example.js' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -i -F 'millions of' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'Series A' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'Founded in 2020' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'
+! rg -F 'TechCorp' . --glob '!node_modules/**' --glob '!tests/**' --glob '!docs/**'

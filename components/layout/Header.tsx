@@ -19,10 +19,9 @@ export default function Header() {
   };
 
   const navigation = [
-    { name: 'Products', href: '/products' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Developers', href: '/developers' },
-    { name: 'Company', href: '/company' },
+    { name: 'RelayBNC', href: '/products' },
+    { name: 'Capabilities', href: '/solutions' },
+    { name: 'About', href: '/company' },
     { name: 'Contact', href: '/contact' },
   ];
 

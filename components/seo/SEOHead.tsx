@@ -9,8 +9,8 @@ interface SEOHeadProps {
 }
 
 export default function SEOHead({
-  title = 'RelayOS - Enterprise-grade Communication Infrastructure',
-  description = 'RelayOS provides enterprise-grade communication infrastructure for businesses and communities. Connect, embed, integrate, and persist your communications with our suite of products.',
+  title = 'RelayOS - Persistent IRC access',
+  description = 'RelayOS is preparing RelayBNC: persistent IRC access with browser access through KiwiIRC.',
   canonical = 'https://getrelayos.com',
   ogImage = '/images/og-image.jpg',
 }: SEOHeadProps) {

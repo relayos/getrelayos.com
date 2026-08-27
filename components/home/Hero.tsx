@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { PlayCircleIcon } from '@/lib/icons';
 
 export function Hero() {
   return (
@@ -11,28 +10,24 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Next-Gen Communication Infrastructure
+              Keep your IRC connection with you
             </h1>
             <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0">
-              RelayOS provides robust, developer-friendly, and scalable solutions for real-time communication. 
-              Built on advanced technology for businesses and communities.
+              RelayBNC is a persistent IRC connection for people who want to
+              return to the conversations they missed. Browser access is
+              available through KiwiIRC.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/signup" className="bg-primary-600 hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md shadow-lg hover:shadow-xl transition duration-300 text-center">
-                Start Free Trial
+              <Link href="/products" className="bg-primary-600 hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md shadow-lg hover:shadow-xl transition duration-300 text-center">
+                Explore RelayBNC
               </Link>
-              <Link href="#" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center justify-center gap-2">
-                <PlayCircleIcon /> Watch Demo
+              <Link href="/contact" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-medium py-3 px-6 rounded-md transition duration-300 flex items-center justify-center gap-2">
+                Contact RelayOS
               </Link>
             </div>
-            <div className="mt-10 text-slate-400 text-sm">
-              Trusted by forward-thinking teams at
-              <div className="mt-4 flex flex-wrap gap-8 justify-center lg:justify-start items-center">
-                <span className="text-white/80 font-medium">TechCorp</span>
-                <span className="text-white/80 font-medium">DevSolutions</span>
-                <span className="text-white/80 font-medium">InnovateX</span>
-                <span className="text-white/80 font-medium">PlatformY</span>
-              </div>
+            <div className="mt-10 max-w-xl text-sm text-slate-400">
+              Offline direct messages are entitlement-gated. Product packaging
+              and eligibility details will be published with the release.
             </div>
           </div>
           

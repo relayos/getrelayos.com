@@ -13,11 +13,11 @@ DNS, certificate wiring, or deployment selection in this repo.
 | Goal | Start here |
 | --- | --- |
 | Edit the public site UI | [`pages/`](pages/) and [`components/`](components/) |
-| Change shared site data | [`lib/data.ts`](lib/data.ts) |
 | Change styling | [`styles/globals.css`](styles/globals.css) and [`tailwind.config.js`](tailwind.config.js) |
 | Change WordPress theme source | [`wordpress/themes/relayos/`](wordpress/themes/relayos/) |
 | Inspect local Compose wiring | [`docker-compose.yml`](docker-compose.yml) |
 | Inspect production image build | [`Dockerfile.nextjs`](Dockerfile.nextjs) |
+| Verify public offering claims | [presales offering evidence](docs/presales-offering-evidence.md) |
 
 ## Stack Shape
 
