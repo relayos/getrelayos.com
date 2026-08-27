@@ -65,8 +65,12 @@ This repo supplies source and build inputs. Deployment-owned systems supply:
 - OAuth and SMTP secrets.
 - tenant or platform runtime configuration.
 
-If a change needs one of those values, change the deployment registry or the
-owning service repo instead of adding it here.
+If a change needs one of those values, start from the
+[RelayOS deploy stack](https://github.com/relayos/relayos-deploy). IRC runtime
+configuration belongs in the
+[IRC operator config repo](https://github.com/relayos/relayos-irc-config), and
+environment materialization belongs in
+[infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry).
 
 ## Change Checklist
 
@@ -74,7 +78,8 @@ owning service repo instead of adding it here.
 2. Run `npm run lint`, `npm run build`, and `npm test`.
 3. Open a focused pull request.
 4. After merge, promote the built image or deployment selection through the
-   environment-owned GitOps path.
+   environment-owned GitOps path documented in the
+   [RelayOS deploy stack](https://github.com/relayos/relayos-deploy).
 5. Verify the live page or WordPress behavior in the target environment.
 
 ## Agent Contract

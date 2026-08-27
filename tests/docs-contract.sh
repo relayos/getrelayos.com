@@ -34,6 +34,9 @@ grep -F 'npm run build' README.md
 grep -F 'npm test' README.md
 grep -F 'deployment registry' README.md
 grep -F 'GitOps path' README.md
+grep -F '[RelayOS deploy stack](https://github.com/relayos/relayos-deploy)' README.md
+grep -F '[IRC operator config repo](https://github.com/relayos/relayos-irc-config)' README.md
+grep -F '[infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry)' README.md
 grep -F 'verify-docs-contract' .woodpecker.yml
 grep -F 'npm test' .woodpecker.yml
 
