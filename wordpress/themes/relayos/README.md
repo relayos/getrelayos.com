@@ -17,9 +17,9 @@ deployment selection in this theme.
 | Product content model | [functions.php](functions.php) | Registers the `product` custom post type and `product_type` taxonomy with REST visibility. |
 | Solution content model | [functions.php](functions.php) | Registers the `solution` custom post type and `solution_category` taxonomy with REST visibility. |
 | Testimonials | [functions.php](functions.php) | Registers the `testimonial` custom post type with REST visibility. |
-| Contact endpoint | [functions.php](functions.php) | Serves `POST /wp-json/relayos/v1/contact`, validates required fields, sends mail with `wp_mail`, and stores a private contact post. |
+| Contact endpoint | [functions.php](functions.php) | Serves `POST /wp-json/relayos/v1/contact`, validates required fields, applies a small per-address rate limit and honeypot, stores a private `relayos_interest` post, and sends mail with `wp_mail` as notification. |
 | Signup endpoint | [functions.php](functions.php) | Serves `POST /wp-json/relayos/v1/signup` and creates a WordPress user. |
-| Headless CORS | [functions.php](functions.php) | Adds permissive CORS headers for headless API usage. |
+| Same-origin form path | [functions.php](functions.php) | Expects browser submissions through the public site's same-origin `/wp-json/` proxy. |
 
 ## Change Path
 

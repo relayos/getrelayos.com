@@ -44,6 +44,12 @@ grep -F 'persistent IRC connection' docs/presales-offering-evidence.md
 grep -Fi 'offline direct messages' docs/presales-offering-evidence.md
 grep -F 'https://github.com/relayos/relayos-deploy/blob/main/' docs/presales-offering-evidence.md
 grep -F 'KiwiIRC' docs/presales-offering-evidence.md
+grep -F 'RelayBNC release interest' pages/contact.tsx
+grep -F '/wp-json/relayos/v1/contact' pages/contact.tsx
+grep -F 'not a purchase' pages/contact.tsx
+grep -F 'relayos_interest' wordpress/themes/relayos/functions.php
+grep -F 'relayos_contact_rate_limit' wordpress/themes/relayos/functions.php
+grep -F 'relayos_interest_source' wordpress/themes/relayos/functions.php
 expected_clone='clone:
   git:
     image: woodpeckerci/plugin-git
