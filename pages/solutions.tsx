@@ -11,6 +11,7 @@ export default function SolutionsPage() {
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">Built around IRC continuity</h1>
           <p className="mt-6 text-xl text-slate-600 dark:text-slate-300">RelayOS is preparing a consumer path for persistent IRC access. The current implementation combines a persistent connection, browser access through KiwiIRC, and entitlement-gated offline direct messages.</p>
           <Link href="/products" className="mt-8 inline-flex rounded-md bg-primary-600 px-6 py-3 font-medium text-white transition hover:bg-primary-700">Explore RelayBNC</Link>
+          <p className="mt-6 text-slate-600 dark:text-slate-300">Operating a community? <Link href="/teams" className="font-medium text-primary-600 hover:text-primary-700">Explore the team offering</Link>.</p>
         </section>
       </main>
     </Layout>
