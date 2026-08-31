@@ -5,17 +5,6 @@
 
 // Register custom post types and taxonomies
 function relayos_register_post_types() {
-    register_post_type('relayos_interest', [
-        'labels' => [
-            'name' => 'RelayOS interests',
-            'singular_name' => 'RelayOS interest',
-        ],
-        'public' => false,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'supports' => ['title', 'custom-fields'],
-    ]);
-
     // Products custom post type
     register_post_type('product', [
         'labels' => [
@@ -87,13 +76,6 @@ add_action('init', 'relayos_register_taxonomies');
 
 // Custom REST API endpoints
 function relayos_register_rest_routes() {
-    // Contact form endpoint
-    register_rest_route('relayos/v1', '/contact', [
-        'methods' => 'POST',
-        'callback' => 'relayos_handle_contact_form',
-        'permission_callback' => '__return_true',
-    ]);
-    
     // Signup endpoint
     register_rest_route('relayos/v1', '/signup', [
         'methods' => 'POST',
@@ -102,80 +84,6 @@ function relayos_register_rest_routes() {
     ]);
 }
 add_action('rest_api_init', 'relayos_register_rest_routes');
-
-// Contact form handler
-function relayos_handle_contact_form($request) {
-    $params = $request->get_params();
-
-    // Browser forms submit on the same origin. A populated honeypot is accepted
-    // without storing data so bots receive no useful signal.
-    if (!empty($params['website'])) {
-        return [
-            'success' => true,
-            'message' => 'Thanks for your interest.',
-        ];
-    }
-
-    $remote_addr = sanitize_text_field($_SERVER['REMOTE_ADDR'] ?? 'unknown');
-    $rate_limit_key = 'relayos_contact_rate_limit_' . hash('sha256', $remote_addr . wp_salt('nonce'));
-    $request_count = (int) get_transient($rate_limit_key);
-    if ($request_count >= 5) {
-        return new WP_Error('rate_limited', 'Please try again later.', ['status' => 429]);
-    }
-    set_transient($rate_limit_key, $request_count + 1, HOUR_IN_SECONDS);
-
-    $name = sanitize_text_field($params['name'] ?? '');
-    $email = sanitize_email($params['email'] ?? '');
-    $phone = sanitize_text_field($params['phone'] ?? '');
-    $company = sanitize_text_field($params['company'] ?? '');
-    $message = sanitize_textarea_field($params['message'] ?? '');
-    
-    if (empty($name) || empty($email) || empty($message)) {
-        return new WP_Error('missing_fields', 'Please fill in all required fields', ['status' => 400]);
-    }
-    
-    $interest_source = sanitize_key($params['interest_source'] ?? 'contact');
-    if (!in_array($interest_source, ['contact', 'relayos_release_interest'], true)) {
-        $interest_source = 'contact';
-    }
-
-    // Send email notification.
-    $to = get_option('admin_email');
-    $subject = 'New RelayOS contact from ' . $name;
-    $body = "Name: $name\n";
-    $body .= "Email: $email\n";
-    if (!empty($phone)) $body .= "Phone: $phone\n";
-    if (!empty($company)) $body .= "Company: $company\n";
-    $body .= "Message: $message\n";
-    
-    // Store requests privately for the operators who own the release path.
-    $contact_data = [
-        'post_title' => 'Contact from ' . $name,
-        'post_type' => 'relayos_interest',
-        'post_status' => 'private',
-        'meta_input' => [
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'company' => $company,
-            'message' => $message,
-            'relayos_interest_source' => $interest_source,
-        ],
-    ];
-
-    $post_id = wp_insert_post($contact_data, true);
-    if (is_wp_error($post_id)) {
-        return new WP_Error('storage_failed', 'Failed to store your request. Please try again.', ['status' => 500]);
-    }
-
-    // Email is a notification only; the private post is the durable record.
-    wp_mail($to, $subject, $body);
-    
-    return [
-        'success' => true,
-        'message' => 'Your message has been sent successfully.',
-    ];
-}
 
 // Signup handler
 function relayos_handle_signup($request) {
