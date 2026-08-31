@@ -25,8 +25,9 @@ DNS, certificate wiring, or deployment selection in this repo.
 flowchart LR
     source["Next.js source"] --> build["Dockerfile.nextjs"]
     theme["WordPress theme source"] --> wp["WordPress runtime"]
-    build --> image["site image"]
-    image --> registry["deployment registry selects image"]
+    build --> ci["Woodpecker builds GHCR image"]
+    ci --> image["ghcr.io/relayos/getrelayos.com:sha-<commit>"]
+    image --> registry["infra-registry selects the deployed image revision"]
     wp --> registry
     registry --> live["managed RelayOS site"]
 ```
@@ -71,6 +72,12 @@ configuration belongs in the
 [IRC operator config repo](https://github.com/relayos/relayos-irc-config), and
 environment materialization belongs in
 [infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry).
+
+Woodpecker dry-runs `Dockerfile.nextjs` for pull requests. A merge to `main`
+publishes `ghcr.io/relayos/getrelayos.com:sha-<commit>` and updates `latest`.
+Those are build artifacts, not deployment instructions: infra-registry selects
+the deployed image revision and the host reconciliation controller applies it.
+Rollback means changing that Registry selection to a prior immutable SHA tag.
 
 ## Change Checklist
 

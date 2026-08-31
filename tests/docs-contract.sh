@@ -32,12 +32,14 @@ grep -F 'npm test' wordpress/themes/relayos/README.md
 grep -F 'npm run lint' README.md
 grep -F 'npm run build' README.md
 grep -F 'npm test' README.md
-grep -F 'deployment registry' README.md
+grep -F 'infra-registry selects the deployed image revision' README.md
 grep -F 'GitOps path' README.md
 grep -F '[RelayOS deploy stack](https://github.com/relayos/relayos-deploy)' README.md
 grep -F '[IRC operator config repo](https://github.com/relayos/relayos-irc-config)' README.md
 grep -F '[infra-registry](https://gitea.i.cyberstorm.dev/relaxgg/infra-registry)' README.md
 grep -F '[presales offering evidence](docs/presales-offering-evidence.md)' README.md
+grep -F 'ghcr.io/relayos/getrelayos.com' README.md
+grep -F 'infra-registry selects the deployed image revision' README.md
 grep -F '# RelayOS public offering evidence' docs/presales-offering-evidence.md
 grep -F 'RelayBNC' docs/presales-offering-evidence.md
 grep -F 'persistent IRC connection' docs/presales-offering-evidence.md
@@ -57,15 +59,14 @@ expected_clone='clone:
       recursive: false'
 actual_clone="$(awk '/^clone:$/ { capture=1 } /^steps:$/ { capture=0 } capture { print }' .woodpecker.yml | sed '/^$/d')"
 test "$actual_clone" = "$expected_clone"
-expected_step='steps:
-  verify-docs-contract:
-    image: node:20-alpine
-    commands:
-      - npm ci
-      - apk add --no-cache python3
-      - npm test'
-actual_step="$(awk '/^steps:$/ { capture=1 } capture { print }' .woodpecker.yml)"
-test "$actual_step" = "$expected_step"
+grep -F 'build-site-image:' .woodpecker.yml
+grep -F 'publish-site-image:' .woodpecker.yml
+grep -F 'repo: ghcr.io/relayos/getrelayos.com' .woodpecker.yml
+grep -F 'dry_run: true' .woodpecker.yml
+grep -F 'branch: [main]' .woodpecker.yml
+grep -F 'from_secret: ghcr_username' .woodpecker.yml
+grep -F 'from_secret: ghcr_token' .woodpecker.yml
+grep -F 'sha-${CI_COMMIT_SHA:0:7}' .woodpecker.yml
 
 python3 - <<'PY'
 from pathlib import Path
