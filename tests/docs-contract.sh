@@ -50,6 +50,11 @@ grep -F 'KiwiIRC' docs/presales-offering-evidence.md
 grep -F 'RelayBNC release interest' pages/contact.tsx
 grep -F '/wp-json/relayos/v1/contact' pages/contact.tsx
 grep -F 'not a purchase' pages/contact.tsx
+test -s pages/teams.tsx
+grep -F 'For organizations' pages/teams.tsx
+grep -F 'Each tenant has its own WordPress site, IRC services, browser IRC, and BNC boundary.' pages/teams.tsx
+grep -F 'not an automated signup or purchase flow' pages/teams.tsx
+grep -F 'href="/teams"' pages/solutions.tsx
 ! rg -F 'relayos_interest' wordpress/themes/relayos/functions.php
 ! rg -F 'relayos_handle_contact_form' wordpress/themes/relayos/functions.php
 expected_clone='clone:
