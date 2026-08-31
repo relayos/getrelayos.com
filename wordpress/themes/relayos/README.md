@@ -17,9 +17,9 @@ deployment selection in this theme.
 | Product content model | [functions.php](functions.php) | Registers the `product` custom post type and `product_type` taxonomy with REST visibility. |
 | Solution content model | [functions.php](functions.php) | Registers the `solution` custom post type and `solution_category` taxonomy with REST visibility. |
 | Testimonials | [functions.php](functions.php) | Registers the `testimonial` custom post type with REST visibility. |
-| Contact endpoint | [functions.php](functions.php) | Serves `POST /wp-json/relayos/v1/contact`, validates required fields, applies a small per-address rate limit and honeypot, stores a private `relayos_interest` post, and sends mail with `wp_mail` as notification. |
 | Signup endpoint | [functions.php](functions.php) | Serves `POST /wp-json/relayos/v1/signup` and creates a WordPress user. |
-| Same-origin form path | [functions.php](functions.php) | Expects browser submissions through the public site's same-origin `/wp-json/` proxy. |
+| Public interest endpoint | [`relayos-deploy`](https://github.com/relayos/relayos-deploy) WordPress image | Serves `POST /wp-json/relayos/v1/contact` on the platform WordPress instance; the image-owned plugin validates requests, applies the honeypot and rate limit, writes private interest records, then notifies operators. |
+| Same-origin form path | Public Next.js client | Sends browser submissions through the public site's same-origin `/wp-json/` proxy. |
 
 ## Change Path
 
@@ -45,7 +45,9 @@ deployment selection in this theme.
 The theme is source code only. Managed environments provide WordPress container
 selection, database credentials, SMTP configuration, OAuth clients, Turnstile
 keys, hostnames, TLS certificates, and tenant/platform placement outside this
-repo.
+repo. The public interest endpoint is an image-owned plugin so it can be
+selected and routed through the normal GitOps path without mounting this source
+directory on a host.
 
 If a change requires a secret or hostname, update the deployment registry or the
 owning runtime repo instead of hard-coding the value in this theme.

@@ -24,6 +24,7 @@ grep -F '## Change Path' wordpress/themes/relayos/README.md
 grep -F '## Runtime Boundary' wordpress/themes/relayos/README.md
 grep -F '## Agent Contract' wordpress/themes/relayos/README.md
 grep -F 'POST /wp-json/relayos/v1/contact' wordpress/themes/relayos/README.md
+grep -F 'relayos/relayos-deploy' wordpress/themes/relayos/README.md
 grep -F 'POST /wp-json/relayos/v1/signup' wordpress/themes/relayos/README.md
 grep -F 'npm run lint' wordpress/themes/relayos/README.md
 grep -F 'npm run build' wordpress/themes/relayos/README.md
@@ -49,9 +50,8 @@ grep -F 'KiwiIRC' docs/presales-offering-evidence.md
 grep -F 'RelayBNC release interest' pages/contact.tsx
 grep -F '/wp-json/relayos/v1/contact' pages/contact.tsx
 grep -F 'not a purchase' pages/contact.tsx
-grep -F 'relayos_interest' wordpress/themes/relayos/functions.php
-grep -F 'relayos_contact_rate_limit' wordpress/themes/relayos/functions.php
-grep -F 'relayos_interest_source' wordpress/themes/relayos/functions.php
+! rg -F 'relayos_interest' wordpress/themes/relayos/functions.php
+! rg -F 'relayos_handle_contact_form' wordpress/themes/relayos/functions.php
 expected_clone='clone:
   git:
     image: woodpeckerci/plugin-git
